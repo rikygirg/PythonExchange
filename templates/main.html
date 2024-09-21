@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderBook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<body>
+    <div class="table-container">
+        <!-- Buy Table -->
+        <div class="table-wrapper">
+            <div class="table-header">
+                <h2>Buy Orders</h2>
+                <button class="add-order" onclick="handleBuyAction()">Add Order</button>
+            </div>
+            <table id="buy-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in buy_orders %}
+                    <tr>
+                        <td>{{ order.order_id }}</td>
+                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.price }}</td>
+                        <td>{{ order.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Sell Table -->
+        <div class="table-wrapper">
+            <div class="table-header">
+                <h2>Sell Orders</h2>
+                <button class="add-order" onclick="handleSellAction()">Add Order</button>    
+            </div>
+            <table id="sell-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in sell_orders %}
+                    <tr>
+                        <td>{{ order.order_id }}</td>
+                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.price }}</td>
+                        <td>{{ order.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
